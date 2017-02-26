@@ -14,7 +14,7 @@ def localbackup(hostname,fname,stats,backupPath):
 	Compare st_mtime
 	'''
 	st_mtime 	= stats[hostname][os.path.abspath(fname)]['st_mtime']
-	backup_path = '%s%s%s_%s'%(backupPath,hostname,os.path.abspath(fname),st_mtime)
+	backup_path 	= '%s%s%s_%s'%(backupPath,hostname,os.path.abspath(fname),st_mtime)
 	dirname 	= os.path.split(backup_path)[0]
 
 	if not os.path.isdir(dirname):
@@ -33,9 +33,9 @@ def getFileStats(fname):
 		s = os.stat(fname)
 		stats = {}
 		if platform.system() == 'Darwin' or platform.system() == 'Linux':
-			stats[socket.gethostname()] 					= {}
-			stats[socket.gethostname()]['timestamp']		= int(time.time())
-			stats[socket.gethostname()][fname] 				= {}
+			stats[socket.gethostname()] 			= {}
+			stats[socket.gethostname()]['timestamp']	= int(time.time())
+			stats[socket.gethostname()][fname] 		= {}
 			stats[socket.gethostname()][fname]['st_mode'] 	= s[0]
 			stats[socket.gethostname()][fname]['st_ino'] 	= s[1]
 			stats[socket.gethostname()][fname]['st_dev'] 	= s[2]
